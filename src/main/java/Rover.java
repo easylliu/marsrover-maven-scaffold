@@ -9,10 +9,10 @@ public class Rover {
 
     public void land(Area area, int x, int y, String direction) {
         if (!area.containsPositionX(x)) {
-            throw new IllegalArgumentException("x=" + x +" is out of area width " + area.getWidth());
+            throw new IllegalArgumentException("x=" + x + " is out of area width " + area.getWidth());
         }
         if (!area.containsPositionY(y)) {
-            throw new IllegalArgumentException("y=" + y +" is out of area height " + area.getHeight());
+            throw new IllegalArgumentException("y=" + y + " is out of area height " + area.getHeight());
         }
         this.x = x;
         this.y = y;
@@ -26,14 +26,14 @@ public class Rover {
     public void move(Area area) {
         if (direction.equals("E")) {
             x += 1;
-        } else if (direction.equals("W") ){
+        } else if (direction.equals("W")) {
             x -= 1;
-        } else if (direction.equals("N") ){
+        } else if (direction.equals("N")) {
             y += 1;
         } else {
             y -= 1;
         }
-        land(area,this.x,this.y,this.direction);
+        land(area, this.x, this.y, this.direction);
     }
 
     public void turnLeft() {

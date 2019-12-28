@@ -7,25 +7,25 @@ public class RoverController {
 
     public String execute(String mission) {
         //String mission = "10,10,5,5,E,M,L,M";
-        String [] commands = mission.split(",");
+        String[] commands = mission.split(",");
         int areaWidth = Integer.parseInt(commands[0]);
         int areaHeight = Integer.parseInt(commands[1]);
-        Area area = new Area(areaWidth,areaHeight);
+        Area area = new Area(areaWidth, areaHeight);
 
         int x = Integer.parseInt(commands[2]);
         int y = Integer.parseInt(commands[3]);
 
         String direction = commands[4];
 
-        rover.land(new Area(areaWidth,areaHeight),x,y,direction);
+        rover.land(new Area(areaWidth, areaHeight), x, y, direction);
 
-        for (int i = 5;i < commands.length; i++) {
-            move_to_command(commands[i],area);
+        for (int i = 5; i < commands.length; i++) {
+            move_to_command(commands[i], area);
         }
         return rover.getPosition();
     }
 
-    public void move_to_command (String command, Area area) {
+    public void move_to_command(String command, Area area) {
         if (command.equals("F")) {
             rover.move(area);
         } else if (command.equals("L")) {
