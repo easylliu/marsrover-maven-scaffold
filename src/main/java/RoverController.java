@@ -20,12 +20,12 @@ public class RoverController {
         rover.land(new Area(areaWidth, areaHeight), x, y, direction);
 
         for (int i = 5; i < commands.length; i++) {
-            move_to_command(commands[i], area);
+            moveToCommand(commands[i], area);
         }
         return rover.getPosition();
     }
 
-    public void move_to_command(String command, Area area) {
+    public void moveToCommand(String command, Area area) {
         if (command.equals("F")) {
             rover.move(area);
         } else if (command.equals("L")) {
