@@ -1,10 +1,12 @@
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
 public class MarsRoverTest {
-    private ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void should_land_the_rover_on_area() {
@@ -121,7 +123,7 @@ public class MarsRoverTest {
     @Test
     public void should_warning_when_land_left_width_out_of_area() {
         expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("x=20 is out of area width 10");
+        expectedException.expectMessage("x=0 is out of area width 10");
         Area area = new Area(10,10);
         Rover rover = new Rover();
         rover.land(area,0,30,Rover.SOUTH);
@@ -139,16 +141,16 @@ public class MarsRoverTest {
     @Test
     public void should_warning_when_land_down_height_out_of_area() {
         expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("y= is out of area height 10");
+        expectedException.expectMessage("y=0 is out of area height 10");
         Area area = new Area(10,10);
         Rover rover = new Rover();
         rover.land(area,10,0,Rover.SOUTH);
-}
+    }
 
     @Test
     public void should_warning_when_move_right_width_out_of_area() {
         expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("x=11 is out of area height 10");
+        expectedException.expectMessage("x=11 is out of area width 10");
         Area area = new Area(10,10) ;
         Rover rover = new Rover();
         rover.land(area,10,10,Rover.EAST);
@@ -163,7 +165,7 @@ public class MarsRoverTest {
     @Test
     public void should_warning_when_move_left_width_out_of_area() {
         expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("x=0 is out of area height 10");
+        expectedException.expectMessage("x=0 is out of area width 10");
         Area area = new Area(10,10) ;
         Rover rover = new Rover();
         rover.land(area,1,1,Rover.WEST);
